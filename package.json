@@ -1,0 +1,18 @@
+{
+  "name": "demo-website-repo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Static demo website with a dependency-free emoji-orbit animation.",
+  "type": "module",
+  "scripts": {
+    "check": "prettier --check . && html-validate . && eslint .",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "eslint": "^9.0.0",
+    "globals": "^15.0.0",
+    "html-validate": "11.21.1",
+    "prettier": "^3.0.0"
+  }
+}

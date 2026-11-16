@@ -1,0 +1,47 @@
+# Changelog
+
+All notable changes to this project are documented here.
+
+The format is based on
+[Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project
+adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+### Added
+
+- `assets/js/main.js`: a dependency-free ES module that orbits six spinning
+  emoji around the "Hello, world!" heading using CSS transforms and
+  `requestAnimationFrame`. The layer is `aria-hidden`, is appended to `<body>`
+  outside `<main>`, and clamps both orbit radii per axis so no emoji can add
+  horizontal scroll or overlap the heading. The emoji are created in JavaScript
+  only, so with scripting disabled the page renders exactly as before.
+  `prefers-reduced-motion: reduce` places the emoji statically and never starts
+  the animation loop.
+- `index.html` now loads that module with
+  `<script type="module" src="assets/js/main.js"></script>` and carries the
+  orbit layer's CSS plus an inline data-URI favicon.
+- `.github/workflows/ci.yml`: a `ci` job running `npm ci`, `prettier --check .`,
+  `html-validate .` and `eslint .` on every push and pull request, and a `pages`
+  job that depends on it, collects `index.html` and `assets/` into `_site`, and
+  deploys the result to GitHub Pages on pushes to `main`.
+- Tooling configuration: `package.json`, `package-lock.json`,
+  `eslint.config.js`, `.htmlvalidate.json`, `.prettierrc.json`,
+  `.prettierignore` and `.gitignore`. All are dev-only; the site itself has no
+  runtime dependencies and no build step.
+- `CONTRIBUTING.md`, `AGENTS.md` and this `CHANGELOG.md`.
+
+### Changed
+
+- `README.md` rewritten to describe the site, how to preview it over a local
+  static server, how to run the checks, and how Pages deployment works.
+
+## [0.1.0]
+
+### Added
+
+- Initial static site: `index.html` with an inline stylesheet, a centred
+  "Hello, world!" heading and a paragraph.
+
+[Unreleased]: https://github.com/imp-alt/demo-website-repo/compare/HEAD...HEAD
+[0.1.0]: https://github.com/imp-alt/demo-website-repo
