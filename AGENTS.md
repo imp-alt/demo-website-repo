@@ -37,6 +37,9 @@ npx eslint .
 python3 -m http.server 8000   # preview; see the note below
 ```
 
+CI and local checks need Node.js 22+ (html-validate 11 calls `fs.globSync`,
+absent in Node 20). `ci.yml` pins `node-version: 22`.
+
 `file://` does not run the animation. `index.html` loads `assets/js/main.js` as
 an ES module, and from a `file://` page the module's origin is `null`, so the
 browser blocks it for CORS reasons and only the no-JavaScript fallback renders.

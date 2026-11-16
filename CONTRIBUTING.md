@@ -57,6 +57,12 @@ npx html-validate .
 npx eslint .
 ```
 
+The checks need Node.js 22 or newer. `html-validate` 11 uses `fs.globSync`,
+which does not exist in Node.js 20, so an older Node makes CI fail with
+`TypeError: fs.globSync is not a function` rather than with a report about the
+HTML. `.github/workflows/ci.yml` pins `node-version: 22`; use the same version
+locally.
+
 To let Prettier fix formatting instead of reporting it:
 
 ```sh

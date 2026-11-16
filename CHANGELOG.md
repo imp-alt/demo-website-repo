@@ -10,6 +10,15 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- CI now runs on Node.js 22 instead of 20. `html-validate` 11 calls
+  `fs.globSync`, which Node.js 20 does not have, so the `html-validate` step
+  failed with `TypeError: fs.globSync is not a function` on GitHub Actions while
+  passing locally. The required version is documented in `CONTRIBUTING.md` and
+  `AGENTS.md`.
+- The workflow actions were raised to the majors that run on Node.js 24
+  (`actions/checkout@v5`, `actions/setup-node@v5`, `actions/configure-pages@v6`,
+  `actions/upload-pages-artifact@v5`, `actions/deploy-pages@v5`), which clears
+  the "Node.js 20 is deprecated" annotations GitHub added to every run.
 - `assets/js/main.js`: a dependency-free ES module that orbits six spinning
   emoji around the "Hello, world!" heading using CSS transforms and
   `requestAnimationFrame`. The layer is `aria-hidden`, is appended to `<body>`
