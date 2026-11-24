@@ -10,6 +10,16 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- `index.html`: a decorative grove of four hand-authored inline-SVG trees (two
+  layered-triangle conifers and two broadleaf silhouettes, varied in height,
+  shape and colour) in a new `aria-hidden` `role="none"` layer that sits behind
+  the centred heading and paragraph. The trees are markup and CSS only, so they
+  render identically with JavaScript disabled, animate nothing under
+  `prefers-reduced-motion: reduce`, and cannot add horizontal scroll: the layer
+  is `position: fixed`, `overflow: hidden` and `pointer-events: none`, the trees
+  are placed with clamped `left`/`right`/`bottom` coordinates, and the two inner
+  trees are dropped below 40rem so a narrow viewport keeps only the corner
+  silhouettes clear of the text box.
 - CI now runs on Node.js 22 instead of 20. `html-validate` 11 calls
   `fs.globSync`, which Node.js 20 does not have, so the `html-validate` step
   failed with `TypeError: fs.globSync is not a function` on GitHub Actions while
